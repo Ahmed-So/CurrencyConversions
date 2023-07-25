@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.example.currencyconversions.ui.main.convertCurrency.ConvertCurrencyHandlers" />
+
+        <variable
+            name="viewModel"
+            type="com.example.currencyconversions.ui.main.convertCurrency.ConvertCurrencyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/_25sdp"
+        tools:context=".ui.main.home.HomeFragment">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_currency_from"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_75sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:clickable="@{viewModel.allCurrencies == null || viewModel.allCurrencies.empty ? false : true}"
+            android:onClick="@{() -> handlers.swapCurrencies()}"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/swap"
+            app:layout_constraintBottom_toBottomOf="@id/sp_currency_from"
+            app:layout_constraintEnd_toStartOf="@id/sp_currency_to"
+            app:layout_constraintStart_toEndOf="@id/sp_currency_from"
+            app:layout_constraintTop_toTopOf="@id/sp_currency_from" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_currency_to"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sp_currency_from" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_amount_from"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:enabled="@{viewModel.allCurrencies == null || viewModel.allCurrencies.empty ? false : true}"
+            android:inputType="number"
+            android:text="@={viewModel.fromAmount}"
+            app:layout_constraintStart_toStartOf="@id/sp_currency_from"
+            app:layout_constraintTop_toBottomOf="@id/sp_currency_from" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_amount_to"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:enabled="@{viewModel.allCurrencies == null || viewModel.allCurrencies.empty ? false : true}"
+            android:inputType="number"
+            android:text="@={viewModel.toAmount}"
+            app:layout_constraintEnd_toEndOf="@id/sp_currency_to"
+            app:layout_constraintTop_toTopOf="@id/et_amount_from" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:enabled="@{viewModel.allCurrencies == null || viewModel.allCurrencies.empty ? false : true}"
+            android:onClick="@{() -> handlers.showDetails()}"
+            android:text="Details"
+            android:textAllCaps="false"
+            app:iconTint="@null"
+            app:layout_constraintEnd_toEndOf="@id/et_amount_to"
+            app:layout_constraintStart_toStartOf="@id/et_amount_from"
+            app:layout_constraintTop_toBottomOf="@id/et_amount_from" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

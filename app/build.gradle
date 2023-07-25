@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
         buildConfig true
     }
 }
@@ -67,4 +68,8 @@ dependencies {
     def room_version = '2.5.2'
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    def intuitVersion = '1.0.6'
+    implementation "com.intuit.sdp:sdp-android:$intuitVersion"
+    implementation "com.intuit.ssp:ssp-android:$intuitVersion"
 }

@@ -8,4 +8,6 @@ interface CurrencyRepo {
     suspend fun getToDayConversionCurrency(): DataStateWrapper<ConversionRatesDay?>
 
     suspend fun getDayConversionCurrency(date: String): DataStateWrapper<ConversionRatesDay?>
+
+    suspend fun getAllCurrencies(): DataStateWrapper<ArrayList<String>>
 }

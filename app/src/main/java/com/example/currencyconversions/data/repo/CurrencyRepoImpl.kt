@@ -43,4 +43,18 @@ class CurrencyRepoImpl(
             DataStateWrapper.Error(errorResponse.code, errorResponse.message)
         }
     }
+
+    override suspend fun getAllCurrencies(): DataStateWrapper<ArrayList<String>> {
+
+        val response = getToDayConversionCurrency()
+
+        return if (response is DataStateWrapper.Success) {
+            val result: ArrayList<String> = ArrayList()
+            result.addAll(response.data!!.getRates().keySet().toList())
+            DataStateWrapper.Success(result)
+        } else {
+            val errorResponse: DataStateWrapper.Error = response as DataStateWrapper.Error
+            DataStateWrapper.Error(errorResponse.code, errorResponse.message)
+        }
+    }
 }
