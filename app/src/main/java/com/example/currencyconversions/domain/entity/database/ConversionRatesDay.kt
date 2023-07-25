@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.example.currencyconversions.domain.entity.response.DayConversionCurrencyResponse
+import com.example.currencyconversions.utils.Utils
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
@@ -16,6 +18,13 @@ class ConversionRatesDay(
     companion object {
         const val TABLE_NAME = "conversion_rates_table"
         const val TABLE_PRIMARY_KEY_NAME = "date_id"
+
+        fun mapper(dayConversionCurrencyResponse: DayConversionCurrencyResponse): ConversionRatesDay {
+            return ConversionRatesDay(
+                Utils.dateFormat(dayConversionCurrencyResponse.date).time,
+                dayConversionCurrencyResponse.rates.toString()
+            )
+        }
     }
 
     @Ignore
