@@ -9,5 +9,22 @@
         android:id="@+id/fragment_home"
         android:name="com.example.currencyconversions.ui.main.convertCurrency.ConvertCurrencyFragment"
         tools:layout="@layout/fragment_convert_currency">
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_details"
+            app:destination="@id/fragment_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_details"
+        android:name="com.example.currencyconversions.ui.main.details.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="fromCurrency"
+            android:defaultValue="EGP"
+            app:argType="string" />
+        <argument
+            android:name="toCurrency"
+            android:defaultValue="EGP"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -57,4 +57,25 @@ class CurrencyRepoImpl(
             DataStateWrapper.Error(errorResponse.code, errorResponse.message)
         }
     }
+
+    override fun getTopTenCurrencies(): Array<String> {
+        return arrayOf("USD", "EUR", "GBP", "JPY", "CHF", "CNY", "EGP", "AED", "SAR", "KWD")
+    }
+
+    override suspend fun getHistoricalData(): DataStateWrapper<ArrayList<ConversionRatesDay>> {
+        val result = ArrayList<ConversionRatesDay>()
+        val calendar = Calendar.getInstance()
+        var conversions: DataStateWrapper<ConversionRatesDay?>? = null
+        for (count in 0..4) {
+            calendar.add(Calendar.DATE, -1)
+            conversions = getDayConversionCurrency(Utils.dateFormat(calendar.time))
+            if (conversions is DataStateWrapper.Success)
+                conversions.data?.let { result.add(it) }
+        }
+
+        return if (result.size > 0)
+            DataStateWrapper.Success(result)
+        else
+            conversions as DataStateWrapper.Error
+    }
 }

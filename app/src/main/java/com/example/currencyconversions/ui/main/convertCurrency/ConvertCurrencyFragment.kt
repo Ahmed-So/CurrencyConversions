@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.currencyconversions.databinding.FragmentConvertCurrencyBinding
 import com.example.currencyconversions.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -144,5 +145,11 @@ class ConvertCurrencyFragment : BaseFragment(), ConvertCurrencyHandlers {
     }
 
     override fun showDetails() {
+        findNavController().navigate(
+            ConvertCurrencyFragmentDirections.actionFragmentHomeToFragmentDetails(
+                binding.spCurrencyFrom.selectedItem as String,
+                binding.spCurrencyTo.selectedItem as String
+            )
+        )
     }
 }
