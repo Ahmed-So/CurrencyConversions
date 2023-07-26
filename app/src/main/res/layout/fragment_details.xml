@@ -15,9 +15,9 @@
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/_12sdp"
         android:paddingVertical="@dimen/_30sdp"
-        tools:context=".ui.main.historical.HistoricalFragment">
+        tools:context=".ui.main.details.DetailsFragment">
 
-        <View
+        <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -28,7 +28,7 @@
             android:id="@+id/ll_historical"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last 3 days' Ratios"
+                android:text="Last 5 days' Ratios"
                 android:textSize="@dimen/_13ssp"
                 android:textStyle="bold" />
 
@@ -47,8 +47,7 @@
                 android:id="@+id/rv_historical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:paddingVertical="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_list_history" />
         </LinearLayout>
@@ -76,8 +75,7 @@
                 android:id="@+id/rv_other_currencies"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:paddingVertical="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_list_currency" />
         </LinearLayout>

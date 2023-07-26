@@ -20,7 +20,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/_25sdp"
-        tools:context=".ui.main.home.HomeFragment">
+        tools:context=".ui.main.convertCurrency.ConvertCurrencyFragment">
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/sp_currency_from"

@@ -15,9 +15,9 @@
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/_12sdp"
         android:paddingVertical="@dimen/_12sdp"
-        tools:context=".ui.main.historical.HistoricalFragment">
+        tools:context=".ui.main.details.DetailsFragment">
 
-        <View
+        <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -43,8 +43,7 @@
                 android:id="@+id/rv_historical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_list_history" />
         </LinearLayout>
@@ -71,7 +70,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:paddingVertical="@dimen/_6sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_list_currency" />
         </LinearLayout>
